@@ -1,4 +1,4 @@
-### Junior C# developer 🇰🇷
+### Junior developer 🇰🇷
 ### My goal is to develop solutions for customers.
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=moveoh1004&theme=dark&show_icons=true)
 <!--
