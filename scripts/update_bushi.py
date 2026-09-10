@@ -160,7 +160,8 @@ def main():
         time.sleep(0.15)
         standing = get(f"/api/user/event/{event['id']}/standing", optional=True)
         time.sleep(0.15)
-        rank = history['user'].get('rank') if history else None
+        user = history.get('user') if history else None
+        rank = user.get('rank') if isinstance(user, dict) else None
         if standing is None:
             return event['id'], {'rank': rank if isinstance(rank, int) and rank > 0 else None,
                                  'size': None, 'unit': 'players', 'comparable': False}
