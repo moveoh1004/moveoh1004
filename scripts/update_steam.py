@@ -46,7 +46,7 @@ def render_top(owned):
     played = sorted((g for g in games if g["playtime_forever"] > 0),
                     key=lambda g: (-g["playtime_forever"], g["appid"]))[:5]
     if not played:
-        return '<p><sub>누적 플레이 기록이 없습니다.</sub></p>'
+        return '<p><sub>No playtime recorded.</sub></p>'
     rows = []
     for game in played:
         hours = f'{game["playtime_forever"] / 60:,.1f}'
@@ -54,7 +54,7 @@ def render_top(owned):
                               f'https://store.steampowered.com/app/{game["appid"]}/',
                               f'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{game["appid"]}/capsule_184x69.jpg',
                               hours))
-    return '<h4>가장 많이 플레이 · TOP 5</h4>\n' + card_table(rows)
+    return '<h4>Most Played · Top 5</h4>\n' + card_table(rows)
 
 
 def render(data, owned=None):
@@ -80,12 +80,12 @@ def render(data, owned=None):
             raise ValueError("Invalid playtime")
         cards.append(game_card(name, link, logo, hours))
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    content = card_table(cards) if cards else '<p><sub>최근 플레이 기록이 없습니다.</sub></p>'
+    content = card_table(cards) if cards else '<p><sub>No recent activity.</sub></p>'
     top = '\n\n' + render_top(owned) if owned is not None else ''
     return (
-        f'{START}\n<div align="center">\n\n<h3>🎮 Steam</h3>\n'
-        f'<p><sub><a href="{PROFILE}">moveOH ↗</a></sub></p>\n\n<h4>최근 플레이</h4>\n'
-        f'{content}{top}\n\n<p><sub>Steam 공개 정보 기준 · 게임·앱 누적 사용 시간 · {timestamp} UTC</sub></p>\n\n'
+        f'{START}\n<div align="center">\n\n<h3>Steam</h3>\n'
+        f'<p><sub><a href="{PROFILE}">moveOH ↗</a></sub></p>\n\n<h4>Recently Played</h4>\n'
+        f'{content}{top}\n\n<p><sub>Public Steam data · Total playtime · {timestamp} UTC</sub></p>\n\n'
         f'</div>\n{END}'
     )
 
