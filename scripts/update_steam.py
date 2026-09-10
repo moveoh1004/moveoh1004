@@ -18,6 +18,20 @@ END = "<!-- steam:end -->"
 README = Path(__file__).resolve().parents[1] / "README.md"
 
 
+def game_card(name, link, image, hours):
+    return (
+        '<td align="center" valign="top" width="140">'
+        f'<a href="{escape(link, quote=True)}">'
+        f'<img src="{escape(image, quote=True)}" width="120" alt="{escape(name, quote=True)}">'
+        f'</a><br><sub>{escape(name)}</sub>'
+        f'<br><sub>{escape(hours)} hrs total</sub></td>'
+    )
+
+
+def card_table(cards):
+    return f'<table width="{140 * len(cards)}"><tr>\n' + '\n'.join(cards) + '\n</tr></table>'
+
+
 def render_top(owned):
     response = owned.get("response", {})
     games = response.get("games")
@@ -34,14 +48,13 @@ def render_top(owned):
     if not played:
         return '<p><sub>누적 플레이 기록이 없습니다.</sub></p>'
     rows = []
-    for rank, game in enumerate(played, 1):
+    for game in played:
         hours = f'{game["playtime_forever"] / 60:,.1f}'
-        rows.append(f'<tr><td>{rank}</td><td><a href="https://store.steampowered.com/app/{game["appid"]}/">'
-                    f'<img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{game["appid"]}/header.jpg" '
-                    f'width="120" alt="{escape(game["name"], quote=True)}"></a></td>'
-                    f'<td><a href="https://store.steampowered.com/app/{game["appid"]}/">'
-                    f'{escape(game["name"])}</a></td><td align="right">{hours} hrs</td></tr>')
-    return '<h4>Most played · TOP 5</h4>\n<table>\n' + '\n'.join(rows) + '\n</table>'
+        rows.append(game_card(game["name"],
+                              f'https://store.steampowered.com/app/{game["appid"]}/',
+                              f'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{game["appid"]}/capsule_184x69.jpg',
+                              hours))
+    return '<h4>가장 많이 플레이 · TOP 5</h4>\n' + card_table(rows)
 
 
 def render(data, owned=None):
@@ -54,7 +67,7 @@ def render(data, owned=None):
     if games is None:
         raise ValueError("Steam game list unavailable; keeping previous section")
     cards = []
-    for game in games.findall("mostPlayedGame")[:4]:
+    for game in games.findall("mostPlayedGame")[:5]:
         name = (game.findtext("gameName") or "").strip()
         link = game.findtext("gameLink") or ""
         logo = game.findtext("gameLogo") or ""
@@ -65,19 +78,13 @@ def render(data, owned=None):
             raise ValueError("Unexpected game image host")
         if not re.fullmatch(r"\d[\d,]*(?:\.\d+)?", hours):
             raise ValueError("Invalid playtime")
-        cards.append(
-            '<td align="center" width="25%">'
-            f'<a href="{escape(link, quote=True)}">'
-            f'<img src="{escape(logo, quote=True)}" width="120" alt="{escape(name, quote=True)}">'
-            f'</a><br><sub>{escape(name)}</sub>'
-            f'<br><sub>{escape(hours)} hrs total</sub></td>'
-        )
+        cards.append(game_card(name, link, logo, hours))
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    content = '<table width="560"><tr>\n' + '\n'.join(cards) + '\n</tr></table>' if cards else '<p><sub>최근 플레이 기록이 없습니다.</sub></p>'
+    content = card_table(cards) if cards else '<p><sub>최근 플레이 기록이 없습니다.</sub></p>'
     top = '\n\n' + render_top(owned) if owned is not None else ''
     return (
         f'{START}\n<div align="center">\n\n<h3>🎮 Steam</h3>\n'
-        f'<p><sub>최근 플레이 · <a href="{PROFILE}">moveOH ↗</a></sub></p>\n\n'
+        f'<p><sub><a href="{PROFILE}">moveOH ↗</a></sub></p>\n\n<h4>최근 플레이</h4>\n'
         f'{content}{top}\n\n<p><sub>Steam 공개 정보 기준 · 게임·앱 누적 사용 시간 · {timestamp} UTC</sub></p>\n\n'
         f'</div>\n{END}'
     )
