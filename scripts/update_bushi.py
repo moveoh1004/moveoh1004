@@ -11,7 +11,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
-def get(path):
+def get(path, optional=False):
     token = os.environ.get('BUSHI_NAVI_TOKEN', '').strip()
     if not token:
         raise RuntimeError('BUSHI_NAVI_TOKEN is missing')
@@ -20,6 +20,8 @@ def get(path):
         with urllib.request.build_opener(NoRedirect).open(request, timeout=30) as response:
             data = json.load(response)
     except urllib.error.HTTPError as error:
+        if optional and error.code in (400, 404):
+            return None
         raise RuntimeError(f'Bushi Navi returned HTTP {error.code}') from None
     except urllib.error.URLError:
         raise RuntimeError('Bushi Navi connection failed') from None
@@ -154,11 +156,15 @@ def main():
     from concurrent.futures import ThreadPoolExecutor
     import time
     def fetch_result(event):
-        history = get(f"/api/user/event/{event['id']}/history")
+        history = get(f"/api/user/event/{event['id']}/history", optional=True)
         time.sleep(0.15)
-        standing = get(f"/api/user/event/{event['id']}/standing")
+        standing = get(f"/api/user/event/{event['id']}/standing", optional=True)
         time.sleep(0.15)
-        return event['id'], standing_summary(standing, history['user'].get('rank'))
+        rank = history['user'].get('rank') if history else None
+        if standing is None:
+            return event['id'], {'rank': rank if isinstance(rank, int) and rank > 0 else None,
+                                 'size': None, 'unit': 'players', 'comparable': False}
+        return event['id'], standing_summary(standing, rank)
     with ThreadPoolExecutor(max_workers=3) as pool:
         results = dict(pool.map(fetch_result, events))
     section = render(events, games, results)
