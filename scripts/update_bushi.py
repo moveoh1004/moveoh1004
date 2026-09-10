@@ -2,6 +2,7 @@
 import json
 import os
 import urllib.request
+import urllib.error
 
 BASE = 'https://api-user.en.bushi-navi.com'
 
@@ -18,6 +19,10 @@ def get(path):
     try:
         with urllib.request.build_opener(NoRedirect).open(request, timeout=30) as response:
             data = json.load(response)
+    except urllib.error.HTTPError as error:
+        raise RuntimeError(f'Bushi Navi returned HTTP {error.code}') from None
+    except urllib.error.URLError:
+        raise RuntimeError('Bushi Navi connection failed') from None
     except Exception:
         raise RuntimeError('Bushi Navi request failed; check token validity') from None
     if not isinstance(data.get('success'), dict):
