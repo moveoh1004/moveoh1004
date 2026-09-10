@@ -91,6 +91,23 @@ def best_event(events, results):
                                          -results[e['id']]['size'], -e['id'])) if candidates else None
 
 
+def registered_decks(data):
+    if data is None:
+        return []
+    decks = data.get('decks')
+    if not isinstance(decks, list):
+        raise RuntimeError('Unexpected registered deck response')
+    result = []
+    for deck in sorted(decks, key=lambda d: d.get('deck_number', 0)):
+        code = deck.get('deck_recipe_id')
+        if code is None or code == '':
+            continue
+        if not isinstance(code, str):
+            raise RuntimeError('Unexpected deck code format')
+        result.append(code.strip())
+    return list(dict.fromkeys(code for code in result if code))
+
+
 def render(events, games, results):
     from html import escape
     from datetime import datetime, timezone
@@ -101,6 +118,12 @@ def render(events, games, results):
         if not url.startswith('https://') or not (host.endswith('.amazonaws.com') or host.endswith('.bushi-navi.com')):
             return ''
         return f'<img src="{escape(url, quote=True)}" width="{width}" alt="{escape(event["title"], quote=True)}">'
+    def deck_text(event):
+        codes = results[event['id']].get('decks', [])
+        if not codes:
+            return ''
+        label = 'Deck' if len(codes) == 1 else 'Decks'
+        return '<br><sub>' + label + ': ' + ' · '.join('<code>' + escape(code) + '</code>' for code in codes) + '</sub>'
     def rank_text(result):
         rank = f'#{result["rank"]}' if result['rank'] else 'Not recorded'
         if result['size']:
@@ -123,7 +146,7 @@ def render(events, games, results):
                     '<td align="left">'
                     f'<strong>{escape(best["title"])}</strong><br><br>'
                     f'<strong>{rank_text(result)} · Top {percent:.1f}%</strong><br>'
-                    f'<sub>{escape(best["start_local_date"])} · {escape(games[str(best["game_title_id"])]["title_short"])}</sub>'
+                    f'<sub>{escape(best["start_local_date"])} · {escape(games[str(best["game_title_id"])]["title_short"])}</sub>{deck_text(best)}'
                     '</td></tr></table>')
     rows = []
     for event in events[:5]:
@@ -131,7 +154,7 @@ def render(events, games, results):
         rows.append('<tr>'
                     f'<td align="center" width="130">{artwork(event, 110)}</td>'
                     f'<td><strong>{escape(event["title"])}</strong><br>'
-                    f'<sub>{escape(event["start_local_date"])} · {escape(game)}</sub></td>'
+                    f'<sub>{escape(event["start_local_date"])} · {escape(game)}</sub>{deck_text(event)}</td>'
                     f'<td align="center"><strong>{rank_text(results[event["id"]])}</strong></td></tr>')
     recent = '<h4>Recent Tournaments</h4>\n<table width="700">\n' + '\n'.join(rows) + '\n</table>' if rows else '<p>No completed tournament entries.</p>'
     date = datetime.now(timezone.utc).strftime('%Y-%m-%d')
@@ -168,6 +191,12 @@ def main():
         return event['id'], standing_summary(standing, rank)
     with ThreadPoolExecutor(max_workers=3) as pool:
         results = dict(pool.map(fetch_result, events))
+    displayed = {event['id'] for event in events[:5]}
+    best = best_event(events, results)
+    if best:
+        displayed.add(best['id'])
+    for event_id in displayed:
+        results[event_id]['decks'] = registered_decks(get(f'/api/user/{event_id}/deckrecipe_id', optional=True))
     section = render(events, games, results)
     path = Path(__file__).resolve().parents[1] / 'README.md'
     current = path.read_text()
