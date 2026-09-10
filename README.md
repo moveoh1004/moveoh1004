@@ -34,19 +34,28 @@
 <!-- bushi:start -->
 <div align="center">
 
-<h3>Tournament History</h3>
-<p><sub>Latest 5 attended events · <a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>
+<h3>Tournament Record</h3>
+<p><sub><a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>
 
-<table>
-<tr><th>Date</th><th>Game</th><th>Tournament</th><th>Rank</th></tr>
-<tr><td>2026-08-31</td><td>hOCG</td><td>[JP][Monthly] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</td><td>#4</td></tr>
-<tr><td>2026-08-31</td><td>hOCG</td><td>[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</td><td>#4</td></tr>
-<tr><td>2026-08-23</td><td>hOCG</td><td>【JP】Bloom Cup DX Card Game Festival 2026 in KOREA</td><td>#15</td></tr>
-<tr><td>2026-08-22</td><td>hOCG</td><td>【JP】hololive OFFICIAL CARD GAME World Grand Prix 25-26 - South Korea</td><td>#7</td></tr>
-<tr><td>2026-08-21</td><td>hOCG</td><td>[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</td><td>#6</td></tr>
+<table width="700"><tr><td align="center" width="33%"><sub>ATTENDED</sub><br><h2>161</h2></td><td align="center" width="33%"><sub>FIRST PLACE</sub><br><h2>17</h2></td><td align="center" width="33%"><sub>RANKED WITH FIELD SIZE</sub><br><h2>148</h2></td></tr></table>
+
+<h4>Best Relative Finish</h4>
+<table width="700"><tr><td align="center" width="190"><img src="https://s3.amazonaws.com/prod.en.bushiroad.files.api/event_series_file/11131/user/HOCG_WGP_banner_kaigai_seoul_1_620_380.png" width="170" alt="【JP】hololive OFFICIAL CARD GAME World Grand Prix 25-26 - South Korea"></td><td align="left"><strong>【JP】hololive OFFICIAL CARD GAME World Grand Prix 25-26 - South Korea</strong><br><br><strong>#7 / 182 players · Top 3.8%</strong><br><sub>2026-08-22 · hOCG</sub></td></tr></table>
+
+<h4>Recent Tournaments</h4>
+<table width="700">
+<tr><td align="center" width="130"><img src="https://s3.amazonaws.com/prod.en.bushiroad.files.api/event_series_file/11690/user/8%E6%9C%88%20hOCG%20shop.png" width="110" alt="[JP][Monthly] hololive OFFICIAL CARD GAME Shop Tournament - August 2026"></td><td><strong>[JP][Monthly] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</strong><br><sub>2026-08-31 · hOCG</sub></td><td align="center"><strong>#4 / 5 players</strong></td></tr>
+<tr><td align="center" width="130"><img src="https://s3.amazonaws.com/prod.en.bushiroad.files.api/event_series_file/11691/user/8%E6%9C%88%20hOCG%20casual.png" width="110" alt="[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026"></td><td><strong>[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</strong><br><sub>2026-08-31 · hOCG</sub></td><td align="center"><strong>#4 / 6 players</strong></td></tr>
+<tr><td align="center" width="130"><img src="https://s3.amazonaws.com/prod.en.bushiroad.files.api/event_series_file/11972/user/Bloom%20Cup%20DX%20%E3%83%90%E3%83%8A%E3%83%BC.png" width="110" alt="【JP】Bloom Cup DX Card Game Festival 2026 in KOREA"></td><td><strong>【JP】Bloom Cup DX Card Game Festival 2026 in KOREA</strong><br><sub>2026-08-23 · hOCG</sub></td><td align="center"><strong>#15 / 77 players</strong></td></tr>
+<tr><td align="center" width="130"><img src="https://s3.amazonaws.com/prod.en.bushiroad.files.api/event_series_file/11131/user/HOCG_WGP_banner_kaigai_seoul_1_620_380.png" width="110" alt="【JP】hololive OFFICIAL CARD GAME World Grand Prix 25-26 - South Korea"></td><td><strong>【JP】hololive OFFICIAL CARD GAME World Grand Prix 25-26 - South Korea</strong><br><sub>2026-08-22 · hOCG</sub></td><td align="center"><strong>#7 / 182 players</strong></td></tr>
+<tr><td align="center" width="130"><img src="https://s3.amazonaws.com/prod.en.bushiroad.files.api/event_series_file/11691/user/8%E6%9C%88%20hOCG%20casual.png" width="110" alt="[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026"></td><td><strong>[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</strong><br><sub>2026-08-21 · hOCG</sub></td><td align="center"><strong>#6 / 11 players</strong></td></tr>
 </table>
 
-<p><sub>Recorded event rank · Updated 2026-09-10 UTC</sub></p>
+<details><summary>How results are counted</summary>
+
+<p><sub>Completed, attended event entries only; canceled, waitlisted and absent entries excluded.<br>Field size comes from unique standings entries, not venue capacity; team events count teams.<br>Best relative finish = lowest rank / field size; ties favor the larger field.<br>Missing or grouped standings are excluded from this comparison. This is a profile metric, not an official rating.<br>Updated 2026-09-10 UTC</sub></p>
+
+</details>
 
 </div>
 <!-- bushi:end -->
