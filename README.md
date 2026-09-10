@@ -36,11 +36,11 @@
 
 <h4>Most played · TOP 5</h4>
 <table>
-<tr><td>1</td><td><a href="https://store.steampowered.com/app/1049590/">Eternal Return</a></td><td align="right">1,182.9 hrs</td></tr>
-<tr><td>2</td><td><a href="https://store.steampowered.com/app/1449850/">Yu-Gi-Oh!  Master Duel</a></td><td align="right">803.7 hrs</td></tr>
-<tr><td>3</td><td><a href="https://store.steampowered.com/app/578080/">PUBG: BATTLEGROUNDS</a></td><td align="right">607.6 hrs</td></tr>
-<tr><td>4</td><td><a href="https://store.steampowered.com/app/601510/">Yu-Gi-Oh! Duel Links</a></td><td align="right">454.4 hrs</td></tr>
-<tr><td>5</td><td><a href="https://store.steampowered.com/app/359550/">Tom Clancy&#x27;s Rainbow Six Siege</a></td><td align="right">416.5 hrs</td></tr>
+<tr><td>1</td><td><a href="https://store.steampowered.com/app/1049590/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1049590/header.jpg" width="120" alt="Eternal Return"></a></td><td><a href="https://store.steampowered.com/app/1049590/">Eternal Return</a></td><td align="right">1,182.9 hrs</td></tr>
+<tr><td>2</td><td><a href="https://store.steampowered.com/app/1449850/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1449850/header.jpg" width="120" alt="Yu-Gi-Oh!  Master Duel"></a></td><td><a href="https://store.steampowered.com/app/1449850/">Yu-Gi-Oh!  Master Duel</a></td><td align="right">803.7 hrs</td></tr>
+<tr><td>3</td><td><a href="https://store.steampowered.com/app/578080/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/578080/header.jpg" width="120" alt="PUBG: BATTLEGROUNDS"></a></td><td><a href="https://store.steampowered.com/app/578080/">PUBG: BATTLEGROUNDS</a></td><td align="right">607.6 hrs</td></tr>
+<tr><td>4</td><td><a href="https://store.steampowered.com/app/601510/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601510/header.jpg" width="120" alt="Yu-Gi-Oh! Duel Links"></a></td><td><a href="https://store.steampowered.com/app/601510/">Yu-Gi-Oh! Duel Links</a></td><td align="right">454.4 hrs</td></tr>
+<tr><td>5</td><td><a href="https://store.steampowered.com/app/359550/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/header.jpg" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a></td><td><a href="https://store.steampowered.com/app/359550/">Tom Clancy&#x27;s Rainbow Six Siege</a></td><td align="right">416.5 hrs</td></tr>
 </table>
 
 <p><sub>Steam 공개 정보 기준 · 게임·앱 누적 사용 시간 · 2026-09-10 UTC</sub></p>
