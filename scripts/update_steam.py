@@ -37,6 +37,9 @@ def render_top(owned):
     for rank, game in enumerate(played, 1):
         hours = f'{game["playtime_forever"] / 60:,.1f}'
         rows.append(f'<tr><td>{rank}</td><td><a href="https://store.steampowered.com/app/{game["appid"]}/">'
+                    f'<img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{game["appid"]}/header.jpg" '
+                    f'width="120" alt="{escape(game["name"], quote=True)}"></a></td>'
+                    f'<td><a href="https://store.steampowered.com/app/{game["appid"]}/">'
                     f'{escape(game["name"])}</a></td><td align="right">{hours} hrs</td></tr>')
     return '<h4>Most played · TOP 5</h4>\n<table>\n' + '\n'.join(rows) + '\n</table>'
 
