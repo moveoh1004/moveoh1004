@@ -15,7 +15,7 @@ def get(path):
     token = os.environ.get('BUSHI_NAVI_TOKEN', '').strip()
     if not token:
         raise RuntimeError('BUSHI_NAVI_TOKEN is missing')
-    request = urllib.request.Request(BASE + path, headers={'X-Authentication': token, 'Accept': 'application/json'})
+    request = urllib.request.Request(BASE + path, headers={'X-Authentication': token, 'Accept': 'application/json', 'X-Accept-Version': 'v1', 'Accept-Language': 'en'})
     try:
         with urllib.request.build_opener(NoRedirect).open(request, timeout=30) as response:
             data = json.load(response)
