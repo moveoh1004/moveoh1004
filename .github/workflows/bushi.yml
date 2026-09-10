@@ -1,0 +1,20 @@
+name: Update tournament history
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/update_bushi.py
+      - .github/workflows/bushi.yml
+permissions:
+  contents: read
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Fetch tournament history
+        env:
+          BUSHI_NAVI_TOKEN: ${{ secrets.BUSHI_NAVI_TOKEN }}
+        run: python3 scripts/update_bushi.py
