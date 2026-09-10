@@ -1,23 +1,6 @@
-<div align="center">
-
-<img src="assets/lucy-banner.jpg" alt="Lucy" width="100%">
-
-<h1>moveOH</h1>
-
-<p><sub>Seoul, South Korea</sub></p>
-
-<br>
-
-<p>
-  <img src="https://img.shields.io/badge/Unity-D5E9FA?style=flat&amp;logo=unity&amp;logoColor=294866" alt="Unity">
-  <img src="https://img.shields.io/badge/C%23-DBDEF5?style=flat" alt="C#">
-  <img src="https://img.shields.io/badge/JavaScript-E8EDB7?style=flat&amp;logo=javascript&amp;logoColor=58603B" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Git-D3EAF1?style=flat&amp;logo=git&amp;logoColor=355D71" alt="Git">
+<p align="center">
+  <img src="assets/lucy-banner.jpg" alt="moveOH · Seoul, South Korea · Unity, C#, JavaScript, Git — Lucy background" width="100%">
 </p>
-
-<br>
-
-</div>
 
 <!-- steam:start -->
 <div align="center">
