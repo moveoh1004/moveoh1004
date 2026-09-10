@@ -111,7 +111,7 @@ def registered_decks(data):
 def render(events, games, results):
     from html import escape
     from datetime import datetime, timezone
-    from urllib.parse import urlparse
+    from urllib.parse import urlparse, quote
     def artwork(event, width):
         url = event.get('logo') or games[str(event['game_title_id'])].get('file_url', '')
         host = urlparse(url).hostname or ''
@@ -122,8 +122,15 @@ def render(events, games, results):
         codes = results[event['id']].get('decks', [])
         if not codes:
             return ''
-        label = 'Deck' if len(codes) == 1 else 'Decks'
-        return '<br><sub>' + label + ': ' + ' · '.join('<code>' + escape(code) + '</code>' for code in codes) + '</sub>'
+        host = 'decklog.bushiroad.com' if int(event['game_title_id']) >= 100 else 'decklog-en.bushiroad.com'
+        badges = []
+        for code in codes:
+            path_code = quote(code, safe='')
+            badge_code = quote(code.replace('-', '--').replace('_', '__'), safe='')
+            badges.append(f'<a href="https://{host}/view/{path_code}">'
+                          f'<img src="https://img.shields.io/badge/DECK-{badge_code}-C6D5F0?style=flat-square&amp;labelColor=263650" '
+                          f'alt="View deck {escape(code, quote=True)}" height="22"></a>')
+        return '<br><br>' + ' '.join(badges)
     def rank_text(result):
         rank = f'#{result["rank"]}' if result['rank'] else 'Not recorded'
         if result['size']:
