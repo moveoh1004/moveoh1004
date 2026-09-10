@@ -57,22 +57,91 @@ def fetch_events():
     raise RuntimeError('Pagination limit reached; previous history preserved')
 
 
-def render(events, games, histories):
+def standing_summary(standing, rank):
+    """Reduce standings to own result + aggregate size; discard opponents' data."""
+    entrants = {}
+    for key in ('swiss_rankings', 'braket_single_rankings'):
+        values = standing.get(key)
+        if not isinstance(values, list):
+            raise RuntimeError('Unexpected standings format')
+        for row in values:
+            if row.get('status_id') in (4, 5, 8):
+                continue
+            identity = row.get('id')
+            if not isinstance(identity, int):
+                raise RuntimeError('Missing standings entry ID')
+            entrants[identity] = row
+    size = len(entrants)
+    # Group ranks cannot safely be compared to a whole-event denominator.
+    comparable = (not standing.get('use_group') and size > 1
+                  and isinstance(rank, int) and 0 < rank <= size
+                  and any(r.get('is_own_team') for r in entrants.values()))
+    return {'rank': rank if isinstance(rank, int) and rank > 0 else None,
+            'size': size if not standing.get('use_group') and size else None,
+            'unit': 'teams' if standing.get('team_count', 1) > 1 else 'players',
+            'comparable': comparable}
+
+
+def best_event(events, results):
+    from fractions import Fraction
+    candidates = [e for e in events if results[e['id']]['comparable']]
+    return min(candidates, key=lambda e: (Fraction(results[e['id']]['rank'], results[e['id']]['size']),
+                                         -results[e['id']]['size'], -e['id'])) if candidates else None
+
+
+def render(events, games, results):
     from html import escape
     from datetime import datetime, timezone
+    from urllib.parse import urlparse
+    def artwork(event, width):
+        url = event.get('logo') or games[str(event['game_title_id'])].get('file_url', '')
+        host = urlparse(url).hostname or ''
+        if not url.startswith('https://') or not (host.endswith('.amazonaws.com') or host.endswith('.bushi-navi.com')):
+            return ''
+        return f'<img src="{escape(url, quote=True)}" width="{width}" alt="{escape(event["title"], quote=True)}">'
+    def rank_text(result):
+        rank = f'#{result["rank"]}' if result['rank'] else 'Not recorded'
+        if result['size']:
+            rank += f' / {result["size"]} {result["unit"]}'
+        return rank
+    best = best_event(events, results)
+    comparable = sum(r['comparable'] for r in results.values())
+    wins = sum(r['rank'] == 1 for r in results.values())
+    metrics = ('<table width="700"><tr>'
+               f'<td align="center" width="33%"><sub>ATTENDED</sub><br><h2>{len(events)}</h2></td>'
+               f'<td align="center" width="33%"><sub>FIRST PLACE</sub><br><h2>{wins}</h2></td>'
+               f'<td align="center" width="33%"><sub>RANKED WITH FIELD SIZE</sub><br><h2>{comparable}</h2></td>'
+               '</tr></table>')
+    featured = ''
+    if best:
+        result = results[best['id']]
+        percent = 100 * result['rank'] / result['size']
+        featured = ('<h4>Best Relative Finish</h4>\n<table width="700"><tr>'
+                    f'<td align="center" width="190">{artwork(best, 170)}</td>'
+                    '<td align="left">'
+                    f'<strong>{escape(best["title"])}</strong><br><br>'
+                    f'<strong>{rank_text(result)} · Top {percent:.1f}%</strong><br>'
+                    f'<sub>{escape(best["start_local_date"])} · {escape(games[str(best["game_title_id"])]["title_short"])}</sub>'
+                    '</td></tr></table>')
     rows = []
     for event in events[:5]:
         game = games[str(event['game_title_id'])]['title_short']
-        rank = histories[event['id']]['user'].get('rank')
-        result = f'#{rank}' if isinstance(rank, int) and rank > 0 else 'Not recorded'
-        rows.append('<tr>' + ''.join(f'<td>{escape(str(value))}</td>' for value in
-                    [event['start_local_date'], game, event['title'], result]) + '</tr>')
-    table = ('<table>\n<tr><th>Date</th><th>Game</th><th>Tournament</th><th>Rank</th></tr>\n'
-             + '\n'.join(rows) + '\n</table>') if rows else '<p><sub>No completed tournament entries.</sub></p>'
+        rows.append('<tr>'
+                    f'<td align="center" width="130">{artwork(event, 110)}</td>'
+                    f'<td><strong>{escape(event["title"])}</strong><br>'
+                    f'<sub>{escape(event["start_local_date"])} · {escape(game)}</sub></td>'
+                    f'<td align="center"><strong>{rank_text(results[event["id"]])}</strong></td></tr>')
+    recent = '<h4>Recent Tournaments</h4>\n<table width="700">\n' + '\n'.join(rows) + '\n</table>' if rows else '<p>No completed tournament entries.</p>'
     date = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-    return ('<!-- bushi:start -->\n<div align="center">\n\n<h3>Tournament History</h3>\n'
-            '<p><sub>Latest 5 attended events · <a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>\n\n'
-            + table + f'\n\n<p><sub>Recorded event rank · Updated {date} UTC</sub></p>\n\n</div>\n<!-- bushi:end -->')
+    return ('<!-- bushi:start -->\n<div align="center">\n\n<h3>Tournament Record</h3>\n'
+            '<p><sub><a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>\n\n'
+            + metrics + '\n\n' + featured + '\n\n' + recent
+            + '\n\n<details><summary>How results are counted</summary>\n\n'
+            '<p><sub>Completed, attended event entries only; canceled, waitlisted and absent entries excluded.<br>'
+            'Field size comes from unique standings entries, not venue capacity; team events count teams.<br>'
+            'Best relative finish = lowest rank / field size; ties favor the larger field.<br>'
+            'Missing or grouped standings are excluded from this comparison. This is a profile metric, not an official rating.<br>'
+            f'Updated {date} UTC</sub></p>\n\n</details>\n\n</div>\n<!-- bushi:end -->')
 
 
 def main():
@@ -82,8 +151,17 @@ def main():
     games = master.get('game_title', master.get('master', {}).get('game_title'))
     if not isinstance(games, dict):
         raise RuntimeError('Game title data unavailable')
-    histories = {e['id']: get(f"/api/user/event/{e['id']}/history") for e in events[:5]}
-    section = render(events, games, histories)
+    from concurrent.futures import ThreadPoolExecutor
+    import time
+    def fetch_result(event):
+        history = get(f"/api/user/event/{event['id']}/history")
+        time.sleep(0.15)
+        standing = get(f"/api/user/event/{event['id']}/standing")
+        time.sleep(0.15)
+        return event['id'], standing_summary(standing, history['user'].get('rank'))
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        results = dict(pool.map(fetch_result, events))
+    section = render(events, games, results)
     path = Path(__file__).resolve().parents[1] / 'README.md'
     current = path.read_text()
     start, end = '<!-- bushi:start -->', '<!-- bushi:end -->'
@@ -100,20 +178,6 @@ def main():
     print(f'Tournament history updated: {min(len(events), 5)} entries')
 
 
-def inspect():
-    events = fetch_events()
-    print('Completed event count:', len(events))
-    def shape(value):
-        if isinstance(value, dict): return {k: shape(v) for k,v in value.items()}
-        if isinstance(value, list): return {'count': len(value), 'first': shape(value[0]) if value else None}
-        return type(value).__name__
-    for event in events[:1]:
-        print('Standings schema:', json.dumps(shape(get(f"/api/user/event/{event['id']}/standing"))))
-        print('Image URL:', event['logo'])
-
 
 if __name__ == '__main__':
-    if os.environ.get('BUSHI_INSPECT') == 'true':
-        inspect()
-    else:
-        main()
+    main()
