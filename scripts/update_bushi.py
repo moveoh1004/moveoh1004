@@ -41,5 +41,11 @@ def schema(value, depth=0):
 
 
 if __name__ == '__main__':
-    result = get('/api/user/my/event?past_event_display_flg=1&limit=20&offset=0')
-    print(json.dumps(schema(result), indent=2))
+    result = get('/api/user/my/event?past_event_display_flg=1&limit=100&offset=0')
+    events = [e for series in result['event_series'] for e in series['events']]
+    print('Listed events:', len(events))
+    print('Status pairs:', sorted(set((e['status_id'], e['team_status_id']) for e in events)))
+    for event in events:
+        if event['status_id'] == 61 and event['team_status_id'] in [6, 10, 11]:
+            print('History schema:', json.dumps(schema(get('/api/user/event/' + str(event['id']) + '/history')), indent=2))
+            break
