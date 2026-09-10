@@ -34,6 +34,15 @@
 <td align="center" width="25%"><a href="https://steamcommunity.com/app/2622000"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2622000/161770009211fc0558719211d936c39046084b53/capsule_184x69.jpg?t=1788422194" width="120" alt="Astral Party"></a><br><sub>Astral Party</sub><br><sub>10.7 hrs total</sub></td>
 </tr></table>
 
+<h4>Most played · TOP 5</h4>
+<table>
+<tr><td>1</td><td><a href="https://store.steampowered.com/app/1049590/">Eternal Return</a></td><td align="right">1,182.9 hrs</td></tr>
+<tr><td>2</td><td><a href="https://store.steampowered.com/app/1449850/">Yu-Gi-Oh!  Master Duel</a></td><td align="right">803.7 hrs</td></tr>
+<tr><td>3</td><td><a href="https://store.steampowered.com/app/578080/">PUBG: BATTLEGROUNDS</a></td><td align="right">607.6 hrs</td></tr>
+<tr><td>4</td><td><a href="https://store.steampowered.com/app/601510/">Yu-Gi-Oh! Duel Links</a></td><td align="right">454.4 hrs</td></tr>
+<tr><td>5</td><td><a href="https://store.steampowered.com/app/359550/">Tom Clancy&#x27;s Rainbow Six Siege</a></td><td align="right">416.5 hrs</td></tr>
+</table>
+
 <p><sub>Steam 공개 정보 기준 · 게임·앱 누적 사용 시간 · 2026-09-10 UTC</sub></p>
 
 </div>
