@@ -1,0 +1,37 @@
+name: Update Steam profile
+
+on:
+  schedule:
+    - cron: '17 */12 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/update_steam.py
+      - .github/workflows/steam.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: steam-profile
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Fetch public Steam profile
+        run: python3 scripts/update_steam.py
+      - name: Commit updated section
+        run: |
+          if git diff --quiet -- README.md; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update Steam activity"
+          git push
