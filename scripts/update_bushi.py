@@ -30,22 +30,75 @@ def get(path):
     return data['success']
 
 
-def schema(value, depth=0):
-    if depth > 6:
-        return type(value).__name__
-    if isinstance(value, dict):
-        return {k: schema(v, depth+1) for k,v in value.items()}
-    if isinstance(value, list):
-        return {'count': len(value), 'item': schema(value[0], depth+1) if value else None}
-    return type(value).__name__
+
+def completed_events(series_list):
+    events = {}
+    for series in series_list:
+        for event in series['events']:
+            # Only checked-in/playing/dropped entries in finished events.
+            if event['status_id'] != 61 or event['team_status_id'] not in (6, 10, 11) or event['is_canceled']:
+                continue
+            events[event['id']] = dict(event, title=series['title'], game_title_id=series['game_title_id'])
+    return sorted(events.values(), key=lambda e: (e['start_local_date'], e['id']), reverse=True)
+
+
+def fetch_events():
+    series = []
+    for page in range(50):
+        result = get(f'/api/user/my/event?past_event_display_flg=1&limit=100&offset={page*100}')
+        batch = result['event_series']
+        if not isinstance(batch, list) or not isinstance(result['total'], int):
+            raise RuntimeError('Unexpected event list')
+        series.extend(batch)
+        if len(series) >= result['total']:
+            return completed_events(series)
+        if not batch:
+            raise RuntimeError('Incomplete event list; previous history preserved')
+    raise RuntimeError('Pagination limit reached; previous history preserved')
+
+
+def render(events, games, histories):
+    from html import escape
+    from datetime import datetime, timezone
+    rows = []
+    for event in events[:5]:
+        game = games[str(event['game_title_id'])]['title_short']
+        rank = histories[event['id']]['user'].get('rank')
+        result = f'#{rank}' if isinstance(rank, int) and rank > 0 else 'Not recorded'
+        rows.append('<tr>' + ''.join(f'<td>{escape(str(value))}</td>' for value in
+                    [event['start_local_date'], game, event['title'], result]) + '</tr>')
+    table = ('<table>\n<tr><th>Date</th><th>Game</th><th>Tournament</th><th>Rank</th></tr>\n'
+             + '\n'.join(rows) + '\n</table>') if rows else '<p><sub>No completed tournament entries.</sub></p>'
+    date = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    return ('<!-- bushi:start -->\n<div align="center">\n\n<h3>Tournament History</h3>\n'
+            '<p><sub>Latest 5 attended events · <a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>\n\n'
+            + table + f'\n\n<p><sub>Recorded event rank · Updated {date} UTC</sub></p>\n\n</div>\n<!-- bushi:end -->')
+
+
+def main():
+    from pathlib import Path
+    events = fetch_events()
+    master = get('/api/masterdata')
+    games = master.get('game_title', master.get('master', {}).get('game_title'))
+    if not isinstance(games, dict):
+        raise RuntimeError('Game title data unavailable')
+    histories = {e['id']: get(f"/api/user/event/{e['id']}/history") for e in events[:5]}
+    section = render(events, games, histories)
+    path = Path(__file__).resolve().parents[1] / 'README.md'
+    current = path.read_text()
+    start, end = '<!-- bushi:start -->', '<!-- bushi:end -->'
+    if start not in current and end not in current:
+        updated = current.rstrip() + '\n\n' + section + '\n'
+    elif current.count(start) == current.count(end) == 1 and current.index(start) < current.index(end):
+        before, rest = current.split(start)
+        _, after = rest.split(end)
+        updated = before + section + after
+    else:
+        raise RuntimeError('Invalid tournament section markers')
+    if updated != current:
+        path.write_text(updated)
+    print(f'Tournament history updated: {min(len(events), 5)} entries')
 
 
 if __name__ == '__main__':
-    result = get('/api/user/my/event?past_event_display_flg=1&limit=100&offset=0')
-    events = [e for series in result['event_series'] for e in series['events']]
-    print('Listed events:', len(events))
-    print('Status pairs:', sorted(set((e['status_id'], e['team_status_id']) for e in events)))
-    for event in events:
-        if event['status_id'] == 61 and event['team_status_id'] in [6, 10, 11]:
-            print('History schema:', json.dumps(schema(get('/api/user/event/' + str(event['id']) + '/history')), indent=2))
-            break
+    main()
