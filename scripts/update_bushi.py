@@ -122,7 +122,7 @@ def render(events, games, results):
         codes = results[event['id']].get('decks', [])
         if not codes:
             return ''
-        host = 'decklog.bushiroad.com' if int(event['game_title_id']) >= 100 else 'decklog-en.bushiroad.com'
+        host = 'decklog-en.bushiroad.com'
         badges = []
         for code in codes:
             path_code = quote(code, safe='')
