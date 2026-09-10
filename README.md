@@ -30,3 +30,23 @@
 
 </div>
 <!-- steam:end -->
+
+<!-- bushi:start -->
+<div align="center">
+
+<h3>Tournament History</h3>
+<p><sub>Latest 5 attended events · <a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>
+
+<table>
+<tr><th>Date</th><th>Game</th><th>Tournament</th><th>Rank</th></tr>
+<tr><td>2026-08-31</td><td>hOCG</td><td>[JP][Monthly] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</td><td>#4</td></tr>
+<tr><td>2026-08-31</td><td>hOCG</td><td>[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</td><td>#4</td></tr>
+<tr><td>2026-08-23</td><td>hOCG</td><td>【JP】Bloom Cup DX Card Game Festival 2026 in KOREA</td><td>#15</td></tr>
+<tr><td>2026-08-22</td><td>hOCG</td><td>【JP】hololive OFFICIAL CARD GAME World Grand Prix 25-26 - South Korea</td><td>#7</td></tr>
+<tr><td>2026-08-21</td><td>hOCG</td><td>[JP][Casual] hololive OFFICIAL CARD GAME Shop Tournament - August 2026</td><td>#6</td></tr>
+</table>
+
+<p><sub>Recorded event rank · Updated 2026-09-10 UTC</sub></p>
+
+</div>
+<!-- bushi:end -->
