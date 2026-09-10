@@ -1,6 +1,6 @@
 <div align="center">
 
-<br>
+<img src="assets/lucy-banner.jpg" alt="Lucy" width="100%">
 
 <h1>moveOH</h1>
 
@@ -9,10 +9,10 @@
 <br>
 
 <p>
-  <img src="https://img.shields.io/badge/Unity-E5DAF5?style=flat&amp;logo=unity&amp;logoColor=574766" alt="Unity">
-  <img src="https://img.shields.io/badge/C%23-F6DCE5?style=flat" alt="C#">
-  <img src="https://img.shields.io/badge/JavaScript-FFF0BF?style=flat&amp;logo=javascript&amp;logoColor=756136" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Git-D8EDE5?style=flat&amp;logo=git&amp;logoColor=47675B" alt="Git">
+  <img src="https://img.shields.io/badge/Unity-D5E9FA?style=flat&amp;logo=unity&amp;logoColor=294866" alt="Unity">
+  <img src="https://img.shields.io/badge/C%23-DBDEF5?style=flat" alt="C#">
+  <img src="https://img.shields.io/badge/JavaScript-E8EDB7?style=flat&amp;logo=javascript&amp;logoColor=58603B" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Git-D3EAF1?style=flat&amp;logo=git&amp;logoColor=355D71" alt="Git">
 </p>
 
 <br>
