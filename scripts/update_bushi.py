@@ -38,7 +38,7 @@ def completed_events(series_list):
             # Only checked-in/playing/dropped entries in finished events.
             if event['status_id'] != 61 or event['team_status_id'] not in (6, 10, 11) or event['is_canceled']:
                 continue
-            events[event['id']] = dict(event, title=series['title'], game_title_id=series['game_title_id'])
+            events[event['id']] = dict(event, title=series['title'], game_title_id=series['game_title_id'], logo=series.get('logo_file', ''))
     return sorted(events.values(), key=lambda e: (e['start_local_date'], e['id']), reverse=True)
 
 
@@ -100,5 +100,20 @@ def main():
     print(f'Tournament history updated: {min(len(events), 5)} entries')
 
 
+def inspect():
+    events = fetch_events()
+    print('Completed event count:', len(events))
+    def shape(value):
+        if isinstance(value, dict): return {k: shape(v) for k,v in value.items()}
+        if isinstance(value, list): return {'count': len(value), 'first': shape(value[0]) if value else None}
+        return type(value).__name__
+    for event in events[:1]:
+        print('Standings schema:', json.dumps(shape(get(f"/api/user/event/{event['id']}/standing"))))
+        print('Image URL:', event['logo'])
+
+
 if __name__ == '__main__':
-    main()
+    if os.environ.get('BUSHI_INSPECT') == 'true':
+        inspect()
+    else:
+        main()

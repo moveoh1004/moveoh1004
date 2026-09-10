@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '43 0,12 * * *'
   workflow_dispatch:
+    inputs:
+      inspect:
+        description: Inspect response structure without publishing
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
@@ -21,6 +26,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Fetch tournament history
         env:
+          BUSHI_INSPECT: ${{ inputs.inspect }}
           BUSHI_NAVI_TOKEN: ${{ secrets.BUSHI_NAVI_TOKEN }}
         run: python3 scripts/update_bushi.py
       - name: Commit updated history
