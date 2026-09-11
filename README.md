@@ -26,7 +26,7 @@
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/359550/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/capsule_184x69.jpg" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>416.5 hrs</sub><br></td>
 </tr></table>
 
-<p><sub>Public Steam data · Total playtime · 2026-09-10 UTC</sub></p>
+<p><sub>Public Steam data · Total playtime · 2026-09-11 UTC</sub></p>
 
 </div>
 <!-- steam:end -->
