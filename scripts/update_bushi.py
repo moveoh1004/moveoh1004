@@ -130,13 +130,13 @@ def render(events, games, results, summary=None, updated=None):
             badges.append(f'<a href="https://{host}/view/{path_code}">'
                           f'<img src="https://img.shields.io/badge/DECK-{badge_code}-C6D5F0?style=flat&amp;labelColor=263650" '
                           f'alt="View deck {escape(code, quote=True)}" height="22"></a>')
-        return '<br><br>' + ' '.join(badges)
+        return '<br>' + ' '.join(badges)
     def rank_text(result):
         rank = f'#{result["rank"]}' if result['rank'] else 'Not recorded'
         if result['size']:
             rank += f' / {result["size"]} {result["unit"]}'
         return rank
-    def badge(label, value, color='C6D5F0', height=28):
+    def badge(label, value, color='C6D5F0', height=24):
         label_url = quote(str(label).replace('-', '--').replace('_', '__'), safe='')
         value_url = quote(str(value).replace('-', '--').replace('_', '__'), safe='')
         return (f'<img src="https://img.shields.io/badge/{label_url}-{value_url}-{color}?style=flat&amp;labelColor=263650" '
@@ -159,25 +159,25 @@ def render(events, games, results, summary=None, updated=None):
         result = results[best['id']]
         percent = 100 * result['rank'] / result['size']
         featured = ('<br>\n<p><sub>B E S T &nbsp; R E L A T I V E &nbsp; F I N I S H</sub></p>\n'
-                    f'<p>{artwork(best, 280)}</p>\n'
-                    f'<h3>{display_title(best["title"])}</h3>\n'
+                    f'<p>{artwork(best, 210)}</p>\n'
+                    f'<h4>{display_title(best["title"])}</h4>\n'
                     f'<p>{badge("FINISH", rank_text(result))} &nbsp; {badge("TOP", f"{percent:.1f}%", "D5C6EF")}</p>\n'
                     f'<p><sub>{escape(best["start_local_date"])} · {escape(games[str(best["game_title_id"])]["title_short"])}</sub>{deck_text(best)}</p>\n<br>')
     cards = []
     for event in events[:5]:
         game = games[str(event['game_title_id'])]['title_short']
-        cards.append(f'<br>{artwork(event, 170)}<br><br>'
+        cards.append(f'{artwork(event, 120)}<br>'
                      f'<strong>{display_title(event["title"])}</strong><br>'
-                     f'<sub>{escape(event["start_local_date"])} · {escape(game)}</sub><br><br>'
-                     f'{badge("FINISH", rank_text(results[event["id"]]), height=22)}{deck_text(event)}<br><br>')
+                     f'<sub>{escape(event["start_local_date"])} · {escape(game)}</sub><br>'
+                     f'{badge("FINISH", rank_text(results[event["id"]]), height=20)}{deck_text(event)}<br>')
     rows = []
     for i in range(0, len(cards), 2):
         pair = cards[i:i+2]
         if len(pair) == 1:
             rows.append('<tr><td align="center" colspan="2">' + pair[0] + '</td></tr>')
         else:
-            rows.append('<tr>' + ''.join('<td align="center" valign="top" width="350">' + c + '</td>' for c in pair) + '</tr>')
-    recent = '<h4>Recent Tournaments</h4>\n<table width="700">\n' + '\n'.join(rows) + '\n</table>' if rows else '<p>No completed tournament entries.</p>'
+            rows.append('<tr>' + ''.join('<td align="center" valign="top" width="300">' + c + '</td>' for c in pair) + '</tr>')
+    recent = '<h4>Recent Tournaments</h4>\n<table width="600">\n' + '\n'.join(rows) + '\n</table>' if rows else '<p>No completed tournament entries.</p>'
     date = updated or datetime.now(timezone.utc).strftime('%Y-%m-%d')
     return ('<!-- bushi:start -->\n<div align="center">\n\n<br><h2>Tournament Record</h2>\n'
             '<p><sub><a href="https://www.en.bushi-navi.com/">Bushi Navi ↗</a></sub></p>\n\n'
