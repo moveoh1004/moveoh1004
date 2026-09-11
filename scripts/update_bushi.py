@@ -164,7 +164,7 @@ def render(events, games, results, summary=None, updated=None):
                     f'<p>{badge("FINISH", rank_text(result))} &nbsp; {badge("TOP", f"{percent:.1f}%", "D5C6EF")}</p>\n'
                     f'<p><sub>{escape(best["start_local_date"])} · {escape(games[str(best["game_title_id"])]["title_short"])}</sub>{deck_text(best)}</p>\n')
     cards = []
-    for event in events[:5]:
+    for event in events[:4]:
         game = games[str(event['game_title_id'])]['title_short']
         cards.append(f'{artwork(event, 90)}<br>'
                      f'<strong>{display_title(event["title"])}</strong><br>'
@@ -212,7 +212,7 @@ def main():
         return event['id'], standing_summary(standing, rank)
     with ThreadPoolExecutor(max_workers=3) as pool:
         results = dict(pool.map(fetch_result, events))
-    displayed = {event['id'] for event in events[:5]}
+    displayed = {event['id'] for event in events[:4]}
     best = best_event(events, results)
     if best:
         displayed.add(best['id'])
@@ -232,7 +232,7 @@ def main():
         raise RuntimeError('Invalid tournament section markers')
     if updated != current:
         path.write_text(updated)
-    print(f'Tournament history updated: {min(len(events), 5)} entries')
+    print(f'Tournament history updated: {min(len(events), 4)} entries')
 
 
 
