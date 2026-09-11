@@ -20,11 +20,11 @@ README = Path(__file__).resolve().parents[1] / "README.md"
 
 def game_card(name, link, image, hours):
     return (
-        '<td align="center" valign="top" width="140">'
+        '<td align="center" valign="top" width="140"><br>'
         f'<a href="{escape(link, quote=True)}">'
         f'<img src="{escape(image, quote=True)}" width="120" alt="{escape(name, quote=True)}">'
-        f'</a><br><sub>{escape(name)}</sub>'
-        f'<br><sub>{escape(hours)} hrs total</sub></td>'
+        f'</a><br><br><sub><strong>{escape(name)}</strong></sub>'
+        f'<br><sub>{escape(hours)} hrs</sub><br><br></td>'
     )
 
 
@@ -83,7 +83,7 @@ def render(data, owned=None):
     content = card_table(cards) if cards else '<p><sub>No recent activity.</sub></p>'
     top = '\n\n' + render_top(owned) if owned is not None else ''
     return (
-        f'{START}\n<div align="center">\n\n<h3>Steam</h3>\n'
+        f'{START}\n<div align="center">\n\n<br><h2>Steam</h2>\n'
         f'<p><sub><a href="{PROFILE}">moveOH ↗</a></sub></p>\n\n<h4>Recently Played</h4>\n'
         f'{content}{top}\n\n<p><sub>Public Steam data · Total playtime · {timestamp} UTC</sub></p>\n\n'
         f'</div>\n{END}'
