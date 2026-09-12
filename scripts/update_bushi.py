@@ -117,7 +117,8 @@ def render(events, games, results, summary=None, updated=None):
         host = urlparse(url).hostname or ''
         if not url.startswith('https://') or not (host.endswith('.amazonaws.com') or host.endswith('.bushi-navi.com')):
             return ''
-        return f'<img src="{escape(url, quote=True)}" width="{width}" alt="{escape(event["title"], quote=True)}">'
+        # An anchor without href prevents GitHub from linking to the image file.
+        return f'<a><img src="{escape(url, quote=True)}" width="{width}" alt="{escape(event["title"], quote=True)}"></a>'
     def deck_text(event):
         codes = results[event['id']].get('decks', [])
         if not codes:
@@ -126,10 +127,10 @@ def render(events, games, results, summary=None, updated=None):
         badges = []
         for code in codes:
             path_code = quote(code, safe='')
-            badge_code = quote(code.replace('-', '--').replace('_', '__'), safe='')
+            badge_code = quote((code + ' ↗').replace('-', '--').replace('_', '__'), safe='')
             badges.append(f'<a href="https://{host}/view/{path_code}">'
-                          f'<img src="https://img.shields.io/badge/DECK-{badge_code}-C6D5F0?style=flat&amp;labelColor=263650" '
-                          f'alt="View deck {escape(code, quote=True)}" height="18"></a>')
+                          f'<img src="https://img.shields.io/badge/VIEW%20DECK-{badge_code}-C6D5F0?style=flat&amp;labelColor=263650" '
+                          f'alt="View deck {escape(code, quote=True)} ↗" height="20"></a>')
         return '<br>' + ' '.join(badges)
     def rank_text(result):
         rank = f'#{result["rank"]}' if result['rank'] else 'Not recorded'
@@ -139,8 +140,8 @@ def render(events, games, results, summary=None, updated=None):
     def badge(label, value, color='C6D5F0', height=20):
         label_url = quote(str(label).replace('-', '--').replace('_', '__'), safe='')
         value_url = quote(str(value).replace('-', '--').replace('_', '__'), safe='')
-        return (f'<img src="https://img.shields.io/badge/{label_url}-{value_url}-{color}?style=flat&amp;labelColor=263650" '
-                f'alt="{escape(str(label))}: {escape(str(value))}" height="{height}">')
+        return (f'<a><img src="https://img.shields.io/badge/{label_url}-{value_url}-{color}?style=flat&amp;labelColor={color}" '
+                f'alt="{escape(str(label))}: {escape(str(value))}" height="{height}"></a>')
     def display_title(title):
         import re
         title = re.sub(r'^(?:\[JP\]|【JP】)\s*', '', title)
