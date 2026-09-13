@@ -54,7 +54,7 @@
 
 <details><summary>How results are counted</summary>
 
-<p><sub>Completed, attended event entries only; canceled, waitlisted and absent entries excluded.<br>Field size comes from unique standings entries, not venue capacity; team events count teams.<br>Best relative finish = lowest rank / field size; ties favor the larger field.<br>Missing or grouped standings are excluded from this comparison. This is a profile metric, not an official rating.<br>Updated 2026-09-12 UTC</sub></p>
+<p><sub>Completed, attended event entries only; canceled, waitlisted and absent entries excluded.<br>Field size comes from unique standings entries, not venue capacity; team events count teams.<br>Best relative finish = lowest rank / field size; ties favor the larger field.<br>Missing or grouped standings are excluded from this comparison. This is a profile metric, not an official rating.<br>Updated 2026-09-13 UTC</sub></p>
 
 </details>
 
