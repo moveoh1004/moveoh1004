@@ -10,7 +10,7 @@
 
 <h4>Recently Played</h4>
 <table width="700"><tr>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/2584990"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2584990/be338a40ec9d7cc06d4b885f02b56edfb674c65f/capsule_184x69.jpg?t=1788991178" width="120" alt="Shadowverse: Worlds Beyond"></a><br><sub><strong>Shadowverse: Worlds Beyond</strong></sub><br><sub>315 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/2584990"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2584990/be338a40ec9d7cc06d4b885f02b56edfb674c65f/capsule_184x69.jpg?t=1788991178" width="120" alt="Shadowverse: Worlds Beyond"></a><br><sub><strong>Shadowverse: Worlds Beyond</strong></sub><br><sub>319 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/381210"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/381210/capsule_184x69.jpg?t=1787769494" width="120" alt="Dead by Daylight"></a><br><sub><strong>Dead by Daylight</strong></sub><br><sub>9.2 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/3722330"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3722330/19c9e6ec567f975b0b4462b8c84c1a38c74adf0d/capsule_184x69.jpg?t=1789401053" width="120" alt="Shift At Midnight"></a><br><sub><strong>Shift At Midnight</strong></sub><br><sub>2.4 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/2622000"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2622000/161770009211fc0558719211d936c39046084b53/capsule_184x69.jpg?t=1788422194" width="120" alt="Astral Party"></a><br><sub><strong>Astral Party</strong></sub><br><sub>11.6 hrs</sub><br></td>
@@ -26,7 +26,7 @@
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/359550/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/capsule_184x69.jpg" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>416.5 hrs</sub><br></td>
 </tr></table>
 
-<p><sub>Public Steam data · Total playtime · 2026-09-22 UTC</sub></p>
+<p><sub>Public Steam data · Total playtime · 2026-09-23 UTC</sub></p>
 
 </div>
 <!-- steam:end -->
