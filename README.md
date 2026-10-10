@@ -10,10 +10,10 @@
 
 <h4>Recently Played</h4>
 <table width="700"><tr>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/431730"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431730/capsule_184x69.jpg?t=1749680273" width="120" alt="Aseprite"></a><br><sub><strong>Aseprite</strong></sub><br><sub>155 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/4025700"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4025700/2cfc752138a31ce4847ba014a8603ffaf4bf64d8/capsule_184x69.jpg?t=1789974308" width="120" alt="Heartopia"></a><br><sub><strong>Heartopia</strong></sub><br><sub>45 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/2584990"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2584990/be338a40ec9d7cc06d4b885f02b56edfb674c65f/capsule_184x69.jpg?t=1788991178" width="120" alt="Shadowverse: Worlds Beyond"></a><br><sub><strong>Shadowverse: Worlds Beyond</strong></sub><br><sub>326 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/365670"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/365670/capsule_184x69.jpg?t=1784038423" width="120" alt="Blender"></a><br><sub><strong>Blender</strong></sub><br><sub>21 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/431730"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431730/capsule_184x69.jpg?t=1749680273" width="120" alt="Aseprite"></a><br><sub><strong>Aseprite</strong></sub><br><sub>144 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/365670"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/365670/capsule_184x69.jpg?t=1784038423" width="120" alt="Blender"></a><br><sub><strong>Blender</strong></sub><br><sub>23 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/3478870"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3478870/d26a05bdaf448c04c8b0e2cd0ba080ef6a0b87a4/capsule_184x69.jpg?t=1789456856" width="120" alt="GeoGuessr Steam Edition"></a><br><sub><strong>GeoGuessr Steam Edition</strong></sub><br><sub>0.2 hrs</sub><br></td>
 </tr></table>
 
