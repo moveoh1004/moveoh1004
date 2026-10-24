@@ -9,10 +9,9 @@
 <p><sub><a href="https://steamcommunity.com/id/moveOH/">moveOH ↗</a></sub></p>
 
 <h4>Recently Played</h4>
-<table width="560"><tr>
+<table width="420"><tr>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/431730"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431730/capsule_184x69.jpg?t=1749680273" width="120" alt="Aseprite"></a><br><sub><strong>Aseprite</strong></sub><br><sub>205 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/1449850"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1449850/fed61aa2e905f18280ce7a2884d591b3cbf08fd7/capsule_184x69.jpg?t=1788064919" width="120" alt="Yu-Gi-Oh!  Master Duel"></a><br><sub><strong>Yu-Gi-Oh!  Master Duel</strong></sub><br><sub>824 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/365670"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/365670/capsule_184x69.jpg?t=1784038423" width="120" alt="Blender"></a><br><sub><strong>Blender</strong></sub><br><sub>23 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/4025700"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4025700/2cfc752138a31ce4847ba014a8603ffaf4bf64d8/capsule_184x69.jpg?t=1789974308" width="120" alt="Heartopia"></a><br><sub><strong>Heartopia</strong></sub><br><sub>46 hrs</sub><br></td>
 </tr></table>
 
