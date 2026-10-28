@@ -10,10 +10,10 @@
 
 <h4>Recently Played</h4>
 <table width="560"><tr>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/431730"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/431730/capsule_184x69.jpg?t=1749680273" width="120" alt="Aseprite"></a><br><sub><strong>Aseprite</strong></sub><br><sub>205 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/1449850"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1449850/fed61aa2e905f18280ce7a2884d591b3cbf08fd7/capsule_184x69.jpg?t=1788064919" width="120" alt="Yu-Gi-Oh!  Master Duel"></a><br><sub><strong>Yu-Gi-Oh!  Master Duel</strong></sub><br><sub>824 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/359550"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/a33d39cc3220cfa508af6211b37a3a641bd68c24/capsule_184x69.jpg?t=1792001976" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>418 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/4025700"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4025700/2cfc752138a31ce4847ba014a8603ffaf4bf64d8/capsule_184x69.jpg?t=1789974308" width="120" alt="Heartopia"></a><br><sub><strong>Heartopia</strong></sub><br><sub>46 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/431730"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/431730/capsule_184x69.jpg?t=1749680273" width="120" alt="Aseprite"></a><br><sub><strong>Aseprite</strong></sub><br><sub>205 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/1449850"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1449850/fed61aa2e905f18280ce7a2884d591b3cbf08fd7/capsule_184x69.jpg?t=1788064919" width="120" alt="Yu-Gi-Oh!  Master Duel"></a><br><sub><strong>Yu-Gi-Oh!  Master Duel</strong></sub><br><sub>824 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/359550"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/a33d39cc3220cfa508af6211b37a3a641bd68c24/capsule_184x69.jpg?t=1792001976" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>418 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/4025700"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4025700/2cfc752138a31ce4847ba014a8603ffaf4bf64d8/capsule_184x69.jpg?t=1789974308" width="120" alt="Heartopia"></a><br><sub><strong>Heartopia</strong></sub><br><sub>46 hrs</sub><br></td>
 </tr></table>
 
 <h4>Most Played · Top 5</h4>
@@ -25,7 +25,7 @@
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/359550/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/capsule_184x69.jpg" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>417.5 hrs</sub><br></td>
 </tr></table>
 
-<p><sub>Public Steam data · Total playtime · 2026-10-27 UTC</sub></p>
+<p><sub>Public Steam data · Total playtime · 2026-10-28 UTC</sub></p>
 
 </div>
 <!-- steam:end -->
