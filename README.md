@@ -14,19 +14,19 @@
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/1449850"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1449850/cc22c3ceaa31b5fc073dd32d237acc65a9efde6d/capsule_184x69.jpg?t=1793252158" width="120" alt="Yu-Gi-Oh!  Master Duel"></a><br><sub><strong>Yu-Gi-Oh!  Master Duel</strong></sub><br><sub>824 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/2357570"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2357570/4dd87b23d0fb4b6295f8e77178f3a080a03ebf3a/capsule_184x69.jpg?t=1791576843" width="120" alt="Overwatch®"></a><br><sub><strong>Overwatch®</strong></sub><br><sub>2.1 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/359550"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/a33d39cc3220cfa508af6211b37a3a641bd68c24/capsule_184x69.jpg?t=1792001976" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>418 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/2739990"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2739990/544cd12e91ab470ba6ecae4858b0bb48d81695bd/capsule_184x69.jpg?t=1783481658" width="120" alt="Mahjong Soul"></a><br><sub><strong>Mahjong Soul</strong></sub><br><sub>0.5 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://steamcommunity.com/app/578080"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/578080/14f42ab797699a9c9f137fda66582d8776da4330/capsule_184x69.jpg?t=1792718193" width="120" alt="PUBG: BATTLEGROUNDS"></a><br><sub><strong>PUBG: BATTLEGROUNDS</strong></sub><br><sub>609 hrs</sub><br></td>
 </tr></table>
 
 <h4>Most Played · Top 5</h4>
 <table width="700"><tr>
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/1049590/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1049590/capsule_184x69.jpg" width="120" alt="Eternal Return"></a><br><sub><strong>Eternal Return</strong></sub><br><sub>1,182.9 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/1449850/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1449850/capsule_184x69.jpg" width="120" alt="Yu-Gi-Oh!  Master Duel"></a><br><sub><strong>Yu-Gi-Oh!  Master Duel</strong></sub><br><sub>824.2 hrs</sub><br></td>
-<td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/578080/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/578080/capsule_184x69.jpg" width="120" alt="PUBG: BATTLEGROUNDS"></a><br><sub><strong>PUBG: BATTLEGROUNDS</strong></sub><br><sub>608.1 hrs</sub><br></td>
+<td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/578080/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/578080/capsule_184x69.jpg" width="120" alt="PUBG: BATTLEGROUNDS"></a><br><sub><strong>PUBG: BATTLEGROUNDS</strong></sub><br><sub>608.5 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/601510/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601510/capsule_184x69.jpg" width="120" alt="Yu-Gi-Oh! Duel Links"></a><br><sub><strong>Yu-Gi-Oh! Duel Links</strong></sub><br><sub>454.4 hrs</sub><br></td>
 <td align="center" valign="top" width="140"><a href="https://store.steampowered.com/app/359550/"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/359550/capsule_184x69.jpg" width="120" alt="Tom Clancy&#x27;s Rainbow Six Siege"></a><br><sub><strong>Tom Clancy&#x27;s Rainbow Six Siege</strong></sub><br><sub>417.5 hrs</sub><br></td>
 </tr></table>
 
-<p><sub>Public Steam data · Total playtime · 2026-10-30 UTC</sub></p>
+<p><sub>Public Steam data · Total playtime · 2026-10-31 UTC</sub></p>
 
 </div>
 <!-- steam:end -->
